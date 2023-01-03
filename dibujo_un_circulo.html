@@ -1,0 +1,64 @@
+<canvas width="600" height="400"></canvas>
+
+
+<script>
+
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+    pincel.fillStyle = "lightgray";
+    pincel.fillRect(0, 0, 600, 400);
+
+    function dibujarCirculo(x, y, radio, color) {
+
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x, y, radio, 0, 2*3.14);
+        pincel.fill();
+    }
+
+    var cont = 0;
+    var i=300,j=200,radio = 30,color;
+
+
+    while(cont < 5){
+        if (cont == 0) {
+            x=i;
+            y=j;
+            color = "red";
+        }
+        if(cont == 1){
+            x=i;
+            y=j-radio*2;
+            color = "yellow";
+        }
+
+        if(cont == 2){
+            x=i+radio*2;
+            y=j;
+            color = "black";
+        }
+
+        if(cont == 3){
+            x=i;
+            y=j+radio*2;
+            color = "blue";
+        }
+
+        if(cont == 4){
+            x=i-radio*2;
+            y=j;
+            color = "orange";
+        }
+    
+        dibujarCirculo(x,y,radio,color);
+        cont++;
+    }
+
+    /*
+    dibujarCirculo(300,200,30,"red");
+    dibujarCirculo(300,140,30,"yellow");
+    dibujarCirculo(360,200,30,"black");
+    dibujarCirculo(300,260,30,"blue");
+    dibujarCirculo(240,200,30,"orange");
+    */
+</script>

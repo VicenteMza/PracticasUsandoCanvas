@@ -1,0 +1,43 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    function dibujarRectangulo(x, y, base, altura, color) {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.fillStyle = color;
+        pincel.fillRect(x, y, base, altura);
+        pincel.strokeStyle = "black";
+        pincel.strokeRect(x, y, base, altura);
+    }
+
+    function escribirTexto(x, y, texto) {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.font = "15px Georgia";
+        pincel.fillStyle = "black";
+        pincel.fillText(texto, x, y);
+    }
+
+    var serie2009 = [6, 47, 41, 3, 3];
+    var serie2019 = [81, 9, 3, 3, 4];
+
+    var colores = ["blue", "green", "yellow", "red", "gray"];
+
+    function dibujarBarra(x, y, serie, color, texto) {
+         //Aquí necesitamos escribir el texto y dibujar los rectángulos
+        escribirTexto(x,y,texto);
+
+        y += 10;
+        for (let i = 0; i < serie.length; i++) {
+            dibujarRectangulo(x, y, 30, serie[i], color[i]);
+            y+=serie[i];
+        }
+    }
+
+    dibujarBarra(20,20,serie2009,colores,"2009");
+    dibujarBarra(70,20,serie2019,colores,"2019");
+
+</script>
